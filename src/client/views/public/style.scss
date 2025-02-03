@@ -1,0 +1,109 @@
+// Variables
+$primary-color: #4CAF50;
+$secondary-color: #3e8e41;
+
+// Mixins
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+  box-sizing: border-box;
+  
+}
+
+// Base styles
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  
+  form {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    @include box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+  
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      @include box-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+      &:focus{
+        outline: none;
+        @include box-shadow(0 0 5px rgba(0, 0, 0, 0.4));
+      }
+    }
+  
+    button[type="submit"] {
+      background-color: $primary-color;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+
+#loader {
+	border: 16px solid #f3f3f3;
+	border-top: 16px solid #3498db;
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	animation: spin 2s linear infinite;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+#error {
+  @include box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  background-color: orange;
+  color: black;
+}
+
+#results {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  @include box-shadow(0 0 10px rgba(0, 0, 0, 0.1));
+
+  h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  }
+}

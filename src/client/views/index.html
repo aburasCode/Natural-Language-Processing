@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test-webpack</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="myForm" method="post" onsubmit="return Client.handleSubmit(event)">
+            <label for="URI">Enter an Article URL:</label>
+            <input type="text" id="URI" name="URI" />
+            <button type="submit" value="Analyze">Analyze</button>
+        </form>
+    </div>
+    <div id="error" style="display: none;"></div>
+    <div id="results">
+        <h2>Results:</h2>
+        <div id="loader" style="display: none;"></div>
+
+        <ul id="resultsList">
+            <li id="agreement"></li>
+            <li id="subjectivity"></li>
+            <li id="confidence"></li>
+            <li id="irony"></li>
+            <li id="score_tag"></li>
+        </ul>
+    </div>
+
+    <!-- Register the Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')  // Path to the generated service worker
+                    .then((registration) => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
